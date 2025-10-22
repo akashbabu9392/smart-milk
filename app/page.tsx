@@ -1,0 +1,15 @@
+import Navbar from '@/components/Navbar'
+import HeroSection from '@/components/HeroSection'
+import WhyChooseUsSection from '@/components/WhyChooseUsSection'
+import InnovativeShoppingSection from '@/components/InnovativeShoppingSection'
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-milkyway-dark">
+      <Navbar />
+      <HeroSection />
+      <WhyChooseUsSection />
+      <InnovativeShoppingSection />
+    </main>
+  )
+}
