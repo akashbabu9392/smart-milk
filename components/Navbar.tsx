@@ -1,12 +1,48 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState('Home')
 
-  const navItems = ['Home', 'About', 'Features', 'Screenshot', 'Testimonials', 'Contact']
+  const navItems = [
+    { name: 'Home', id: 'home' },
+    { name: 'About', id: 'about' },
+    { name: 'Features', id: 'features' },
+    { name: 'Screenshot', id: 'screenshot' },
+    { name: 'Testimonials', id: 'testimonials' },
+    { name: 'Contact', id: 'contact' }
+  ]
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+
+  // Scroll spy functionality
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map(item => document.getElementById(item.id))
+      const scrollPosition = window.scrollY + 100
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i]
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveLink(navItems[i].name)
+          break
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <nav className="bg-milkyway-dark px-6 py-4">
@@ -29,11 +65,14 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <button
-              key={item}
-              onClick={() => setActiveLink(item)}
-              className={`nav-link ${activeLink === item ? 'active' : ''}`}
+              key={item.name}
+              onClick={() => {
+                setActiveLink(item.name)
+                scrollToSection(item.id)
+              }}
+              className={`nav-link ${activeLink === item.name ? 'active' : ''}`}
             >
-              {item}
+              {item.name}
             </button>
           ))}
         </div>
