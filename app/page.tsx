@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar'
 import HeroSection from '@/components/HeroSection'
 import WhyChooseUsSection from '@/components/WhyChooseUsSection'
 import InnovativeShoppingSection from '@/components/InnovativeShoppingSection'
+import FeaturesSection from '@/components/FeaturesSection'
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <WhyChooseUsSection />
       <InnovativeShoppingSection />
+      <FeaturesSection />
     </main>
   )
 }
