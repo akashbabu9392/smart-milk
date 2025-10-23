@@ -3,6 +3,7 @@ import HeroSection from '@/components/HeroSection'
 import WhyChooseUsSection from '@/components/WhyChooseUsSection'
 import InnovativeShoppingSection from '@/components/InnovativeShoppingSection'
 import FeaturesSection from '@/components/FeaturesSection'
+import AppScreenshotsSection from '@/components/AppScreenshotsSection'
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <WhyChooseUsSection />
       <InnovativeShoppingSection />
       <FeaturesSection />
+      <AppScreenshotsSection />
     </main>
   )
 }
